@@ -1,9 +1,18 @@
 public class Cliente {
     private String nome;
     private String conta;
-    private int saldo;
+    private double saldo;
 
     public Cliente() {
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "nome='" + nome + '\'' +
+                ", conta='" + conta + '\'' +
+                ", saldo=" + saldo +
+                '}';
     }
 
     public Cliente(String nome, String conta, int saldo) {
@@ -36,11 +45,11 @@ public class Cliente {
         this.conta = conta;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 }
