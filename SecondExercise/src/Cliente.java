@@ -1,8 +1,8 @@
 public class Cliente {
     private String celular;
     private String nome;
-    private String tipoPlano;
-    private double saudo;
+    private int tipoPlano;
+    private double saldo;
 
     public String getCelular() {
         return celular;
@@ -20,30 +20,46 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getTipoPlano() {
+    public int getTipoPlano() {
         return tipoPlano;
     }
 
-    public void setTipoPlano(String tipoPlano) {
+    public void setTipoPlano(int tipoPlano) {
         this.tipoPlano = tipoPlano;
     }
 
-    public double getSaudo() {
-        return saudo;
+    public double getSaldo() {
+        return saldo;
     }
 
-    public void setSaudo(double saudo) {
-        this.saudo = saudo;
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     public Cliente() {
     }
 
-    public Cliente(String celular, String nome, String tipoPlano, double saudo) {
+    public Cliente(String celular, String nome, int tipoPlano, double saldo) {
         this.celular = celular;
         this.nome = nome;
         this.tipoPlano = tipoPlano;
-        this.saudo = saudo;
+        this.saldo = saldo;
+    }
+
+    public String tipoPlano(){
+        if(tipoPlano == 1){
+            return "pre-pago";
+        }else{
+            return "pos-pago";
+        }
+    }
+
+    public void alterarSaldo(double valor){
+        if(tipoPlano==1){
+            saldo -= valor;
+        }else{
+            saldo += valor;
+        }
     }
 
     @Override
@@ -51,8 +67,16 @@ public class Cliente {
         return "Cliente{" +
                 "celular='" + celular + '\'' +
                 ", nome='" + nome + '\'' +
-                ", tipoPlano='" + tipoPlano + '\'' +
-                ", saudo=" + saudo +
+                ", tipoPlano='" + tipoPlano() + '\'' +
+                ", saldo=" + saldo +
                 '}';
+    }
+
+    public void incrementar(double valor){
+        saldo += valor;
+    }
+
+    public void decrementar(double valor){
+        saldo += valor;
     }
 }
