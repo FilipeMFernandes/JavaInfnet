@@ -1,13 +1,20 @@
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Application {
     public static void main(String[] args) {
         Aluno aluno = new Aluno();
-        aluno.setNome(leNome());
-        aluno.setMatricula(leMatricula());
-        aluno.setNota1(leNota());
-        aluno.setNota2(leNota());
-        System.out.println(aluno.avaliar());
+        aluno.setNome(JOptionPane.showInputDialog("Insira o nome do aluno."));
+        aluno.setMatricula(JOptionPane.showInputDialog("Insira a matricula."));
+        aluno.setNota1(Double.parseDouble(JOptionPane.showInputDialog("Insira a nota 1 do aluno.")));
+        aluno.setNota2(Double.parseDouble(JOptionPane.showInputDialog("Insira a nota 2 do aluno.")));
+        JOptionPane.showMessageDialog(null,aluno.avaliar());
+
+
+//        aluno.setMatricula(leMatricula());
+//        aluno.setNota1(leNota());
+//        aluno.setNota2(leNota());
+//        System.out.println(aluno.avaliar());
     }
 
     private static String leNome() {
