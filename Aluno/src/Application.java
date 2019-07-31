@@ -3,40 +3,37 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         Aluno aluno = new Aluno();
-        leNome(aluno);
-        leMatricula(aluno);
-        leNota1(aluno);
-        leNota2(aluno);
+        aluno.setNome(leNome());
+        aluno.setMatricula(leMatricula());
+        aluno.setNota1(leNota());
+        aluno.setNota2(leNota());
         System.out.println(aluno.avaliar());
     }
 
-    private static void leNome(Aluno aluno) {
+    private static String leNome() {
         Scanner entrada = new Scanner(System.in);
+        String nome;
         System.out.print("Escreva o nome do aluno: ");
-        aluno.setNome(entrada.nextLine());
+        nome = entrada.nextLine();
+        return nome;
     }
 
-    private static void leMatricula(Aluno aluno) {
+    private static String leMatricula() {
         Scanner entrada = new Scanner(System.in);
+        String matricula;
         System.out.print("Escreva o matricula do aluno: ");
-        aluno.setMatricula(entrada.nextLine());
+        matricula = entrada.nextLine();
+        return matricula;
     }
 
-    private static void leNota1(Aluno aluno) {
+    private static double leNota() {
         Scanner entrada = new Scanner(System.in);
+        double nota;
         do {
-            System.out.print("Escreva o nota 1 do aluno: ");
-            aluno.setNota1(entrada.nextDouble());
-        }while(aluno.getNota1()<0 || aluno.getNota1()>10);
+            System.out.print("Escreva o nota do aluno: ");
+            nota = entrada.nextDouble();
+        }while(nota <0 || nota >10);
+        return nota;
     }
-
-    private static void leNota2(Aluno aluno) {
-        Scanner entrada = new Scanner(System.in);
-        do {
-            System.out.print("Escreva o nota 2 do aluno: ");
-            aluno.setNota2(entrada.nextDouble());
-        }while(aluno.getNota2()<0 || aluno.getNota2()>10);
-    }
-
 
 }
