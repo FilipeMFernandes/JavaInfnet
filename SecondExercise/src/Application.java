@@ -22,6 +22,7 @@ public class Application {
         numero = entrada.nextLine();
         return numero;
     }
+
     public static String leNome(){
         Scanner entrada = new Scanner(System.in);
         String nome;
