@@ -51,13 +51,31 @@ public class Application {
 
     public static Conta criarConta() {
         Conta conta = new Conta();
-        conta.setTitular(JOptionPane.showInputDialog("Escreva o nome do cliente:"));
-        conta.setNumConta(JOptionPane.showInputDialog("Escreva o número da conta:"));
-        conta.setSaldo(Long.parseLong(JOptionPane.showInputDialog("Escreva o saldo da conta:")));
+        leTitular(conta);
+        leNumConta(conta);
+        leSaldo(conta);
+        return conta;
+    }
+
+    public static void leSaldo(Conta conta) {
+        conta.setSaldo(Long.parseLong(JOptionPane.showInputDialog(s)));
         while(conta.getSaldo()<=0){
             conta.setSaldo(Long.parseLong(JOptionPane.showInputDialog("O saldo da conta deve ser inicializado com um valor maior que zero:")));
         }
-        return conta;
+    }
+
+    public static void leNumConta(Conta conta) {
+        conta.setNumConta(JOptionPane.showInputDialog("Escreva o número da conta:"));
+        while(conta.getNumConta().equals("")){
+            conta.setNumConta(JOptionPane.showInputDialog("Número da conta inválido, escreva novamente:"));
+        }
+    }
+
+    public static void leTitular(Conta conta) {
+        conta.setTitular(JOptionPane.showInputDialog("Escreva o nome do cliente:"));
+        while(conta.getTitular().length() > 0 ){
+            conta.setTitular(JOptionPane.showInputDialog("Nome inválido, escreva novamente:"));
+        }
     }
 
     public static void depositar(Conta conta) {
