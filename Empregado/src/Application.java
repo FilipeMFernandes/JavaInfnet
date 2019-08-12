@@ -52,7 +52,7 @@ public class Application {
 
     private static void leMatricula(Empregado empregado) {
         empregado.setMatricula(JOptionPane.showInputDialog("Escreva o matricula do empregado:"));
-        while(empregado.getMatricula().equals("")){
+        while(empregado.getMatricula().length() == 0){
             empregado.setMatricula(JOptionPane.showInputDialog("Matricula vazio, escreva novamente:"));
         }
     }
@@ -66,11 +66,11 @@ public class Application {
 
     private static void leNomeSobrenome(Empregado empregado) {
         empregado.setNome(JOptionPane.showInputDialog("Escreva o nome do empregado:"));
-        while(empregado.getNome().equals("")){
+        while(empregado.getNome().length() == 0){
             empregado.setNome(JOptionPane.showInputDialog("Nome vazio, escreva novamente:"));
         }
         empregado.setSobrenome(JOptionPane.showInputDialog("Escreva o sobrenome do empregado:"));
-        while(empregado.getSobrenome().equals("")){
+        while(empregado.getSobrenome().length() == 0){
             empregado.setSobrenome(JOptionPane.showInputDialog("Sobrenome vazio, escreva novamente:"));
         }
     }
