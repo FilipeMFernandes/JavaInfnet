@@ -58,7 +58,7 @@ public class Application {
     }
 
     public static void leSaldo(Conta conta) {
-        conta.setSaldo(Long.parseLong(JOptionPane.showInputDialog(s)));
+        conta.setSaldo(Long.parseLong(JOptionPane.showInputDialog("Escreva o saldo da conta: ")));
         while(conta.getSaldo()<=0){
             conta.setSaldo(Long.parseLong(JOptionPane.showInputDialog("O saldo da conta deve ser inicializado com um valor maior que zero:")));
         }
