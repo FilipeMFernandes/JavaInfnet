@@ -1,5 +1,3 @@
-import jdk.nashorn.internal.scripts.JO;
-
 import javax.swing.*;
 import java.util.ArrayList;
 
@@ -19,9 +17,7 @@ public class Application {
                     sacar(clientes);
                     break;
                 case 4:
-                    Cliente cliente = consultar(clientes);
-                    if (cliente == null) return;
-                    JOptionPane.showMessageDialog(null, cliente.toString());
+                    consultar(clientes);
                     break;
                 case 5:
                     consultarTodos(clientes);
@@ -33,6 +29,12 @@ public class Application {
                     JOptionPane.showMessageDialog(null, "Opcao Invalida! Tente novamente.");
             }
         }
+    }
+
+    private static void consultar(ArrayList<Cliente> clientes) {
+        Cliente cliente = procurar(clientes);
+        if (cliente == null) return;
+        JOptionPane.showMessageDialog(null, cliente.toString());
     }
 
     private static int menu() {
@@ -72,20 +74,20 @@ public class Application {
     }
 
     private static void depositar(ArrayList<Cliente> clientes) {
-        Cliente cliente = consultar(clientes);
+        Cliente cliente = procurar(clientes);
         double saldo = cliente.getSaldo();
         saldo += Double.parseDouble(JOptionPane.showInputDialog("Insira o valor a ser depositado:"));
         cliente.setSaldo(saldo);
     }
 
     private static void sacar(ArrayList<Cliente> clientes) {
-        Cliente cliente = consultar(clientes);
+        Cliente cliente = procurar(clientes);
         double saldo = cliente.getSaldo();
         saldo -= Double.parseDouble(JOptionPane.showInputDialog("Insira o valor a ser sacado:"));
         cliente.setSaldo(saldo);
     }
 
-    private static Cliente consultar(ArrayList<Cliente> clientes) {
+    private static Cliente procurar(ArrayList<Cliente> clientes) {
         String cpf = JOptionPane.showInputDialog("Insira o cpf do cliente:");
         Cliente consultado = null;
         for (Cliente cliente : clientes){
