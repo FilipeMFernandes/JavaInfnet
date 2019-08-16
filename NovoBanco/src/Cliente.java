@@ -1,13 +1,13 @@
 public class Cliente {
-    private String nome, cpf;
+    private String nome, numConta;
     private double saldo;
 
     public Cliente() {
     }
 
-    public Cliente(String nome, String cpf, double saldo) {
+    public Cliente(String nome, String numConta, double saldo) {
         this.nome = nome;
-        this.cpf = cpf;
+        this.numConta = numConta;
         this.saldo = saldo;
     }
 
@@ -19,12 +19,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getNumConta() {
+        return numConta;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setNumConta(String numConta) {
+        this.numConta = numConta;
     }
 
     public double getSaldo() {
@@ -38,7 +38,8 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente: " + nome + "\n" +
-                "cpf: " + cpf + "\n" +
+                "numConta: " + numConta + "\n" +
                 "saldo: " + saldo ;
     }
+
 }

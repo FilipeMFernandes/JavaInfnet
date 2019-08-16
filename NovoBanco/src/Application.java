@@ -32,8 +32,12 @@ public class Application {
     }
 
     private static void consultar(ArrayList<Cliente> clientes) {
+        if (isClientesEmpty(clientes)) return;
         Cliente cliente = procurar(clientes);
-        if (cliente == null) return;
+        if (cliente == null){
+            JOptionPane.showMessageDialog(null, "Erro! Cliente nao encontrado!");
+            return;
+        }
         JOptionPane.showMessageDialog(null, cliente.toString());
     }
 
@@ -50,7 +54,12 @@ public class Application {
 
     private static void criarCliente(ArrayList<Cliente> clientes) {
         Cliente cliente = new Cliente();
-        leNomeCpf(cliente);
+        leConta(cliente);
+        if(contaExiste(clientes, cliente)){
+            JOptionPane.showMessageDialog(null, "Numero de conta ja existe!");
+            return;
+        }
+        leNome(cliente);
         leSaldo(cliente);
         clientes.add(cliente);
     }
@@ -62,15 +71,23 @@ public class Application {
         }
     }
 
-    private static void leNomeCpf(Cliente cliente) {
+    private static void leNome(Cliente cliente) {
         cliente.setNome(JOptionPane.showInputDialog("Insira o nome do cliente:"));
         while (cliente.getNome().length() == 0){
             cliente.setNome(JOptionPane.showInputDialog("Nome vazio! Insira novamente:"));
         }
-        cliente.setCpf(JOptionPane.showInputDialog("Insira o cpf do cliente:"));
-        while (cliente.getNome().length() == 0){
-            cliente.setNome(JOptionPane.showInputDialog("CPF vazio! Insira novamente:"));
+
+    }
+
+    private static void leConta(Cliente cliente) {
+        cliente.setNumConta(JOptionPane.showInputDialog("Insira o numero de conta do cliente:"));
+        while (cliente.getNumConta().length() == 0){
+            cliente.setNumConta(JOptionPane.showInputDialog("Numero de Conta vazio! Insira novamente:"));
         }
+    }
+
+    private static boolean contaExiste(ArrayList<Cliente> clientes, Cliente cliente) {
+        return ( procurar(clientes, cliente.getNumConta())!= null );
     }
 
     private static void depositar(ArrayList<Cliente> clientes) {
@@ -88,10 +105,10 @@ public class Application {
     }
 
     private static Cliente procurar(ArrayList<Cliente> clientes) {
-        String cpf = JOptionPane.showInputDialog("Insira o cpf do cliente:");
+        String cpf = JOptionPane.showInputDialog("Insira o numero de conta do cliente:");
         Cliente consultado = null;
         for (Cliente cliente : clientes){
-            if(cliente.getCpf().equals(cpf)){
+            if(cliente.getNumConta().equals(cpf)){
                 consultado = cliente;
                 break;
             }
@@ -101,8 +118,19 @@ public class Application {
         }
         return consultado;
     }
+    private static Cliente procurar(ArrayList<Cliente> clientes, String numConta) {
+        Cliente consultado = null;
+        for (Cliente cliente : clientes){
+            if(cliente.getNumConta().equals(numConta)){
+                consultado = cliente;
+                break;
+            }
+        }
+        return consultado;
+    }
 
     private static void consultarTodos(ArrayList<Cliente> clientes) {
+        if (isClientesEmpty(clientes)) return;
         StringBuilder msg = new StringBuilder();
         msg.append("Contas:\n");
         for (Cliente cliente : clientes) {
@@ -110,5 +138,13 @@ public class Application {
                     .append("\n");
         }
         JOptionPane.showMessageDialog(null, msg);
+    }
+
+    private static boolean isClientesEmpty(ArrayList<Cliente> clientes) {
+        if(clientes.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Erro! Lista de clientes vazia.");
+            return true;
+        }
+        return false;
     }
 }
