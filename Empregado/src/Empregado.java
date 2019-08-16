@@ -1,6 +1,6 @@
 public class Empregado {
     private String nome, sobrenome, matricula;
-    private long salario;
+    private double salario;
 
     public Empregado() {
     }
@@ -36,11 +36,11 @@ public class Empregado {
         this.matricula = matricula;
     }
 
-    public long getSalario() {
+    public double getSalario() {
         return salario;
     }
 
-    public void setSalario(long salario) {
+    public void setSalario(double salario) {
         this.salario = salario;
     }
 
@@ -50,5 +50,13 @@ public class Empregado {
                 nome + " " + sobrenome + ", \n" +
                 "matricula: " + matricula + ", \n" +
                 "salario: " + salario;
+    }
+    public void alterarSalario(double porcentagem) {
+
+        salario += (salario*porcentagem)/100;
+    }
+
+    public double getSalarioAnual() {
+        return salario*12;
     }
 }

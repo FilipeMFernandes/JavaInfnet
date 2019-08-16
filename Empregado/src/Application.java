@@ -10,7 +10,8 @@ public class Application {
                     empregado = criarEmpregado();
                     break;
                 case 2:
-                    alterarSalario(empregado);
+                    lePorcentagem(empregado);
+
                     break;
                 case 3:
                     consultarAnual(empregado);
@@ -27,19 +28,17 @@ public class Application {
         }
     }
 
+    private static void lePorcentagem(Empregado empregado) {
+        long porcentagem = Long.parseLong(JOptionPane.showInputDialog("Entre com o valor a ser alterado do salario, em %:"));
+        empregado.alterarSalario(porcentagem);
+    }
+
     private static void consultarInfo(Empregado empregado) {
         JOptionPane.showMessageDialog(null, empregado.toString());
     }
 
     private static void consultarAnual(Empregado empregado) {
-        JOptionPane.showMessageDialog(null, "O salario anual do funcionario " + empregado.getNome() + " " + empregado.getSobrenome() + ": " + empregado.getSalario()*12);
-    }
-
-    private static void alterarSalario(Empregado empregado) {
-        long porcentagem = Long.parseLong(JOptionPane.showInputDialog("Entre com o valor a ser alterado do salario, em %:"));
-        long salario = empregado.getSalario();
-        salario += (salario*porcentagem)/100;
-        empregado.setSalario(salario);
+        JOptionPane.showMessageDialog(null, "O salario anual do funcionario " + empregado.getNome() + " " + empregado.getSobrenome() + ": " + empregado.getSalarioAnual());
     }
 
     private static Empregado criarEmpregado() {
@@ -82,6 +81,7 @@ public class Application {
                 "3 - Consultar Salário anual\n" +
                 "4 - Consultar informaçoes do Empregado\n" +
                 "5 - Sair";
+
         return Integer.parseInt(JOptionPane.showInputDialog(msg));
     }
 }
