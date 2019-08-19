@@ -75,13 +75,18 @@ public class Application {
     }
 
     public static int menu(){
-        String msg = "Escolha um opçao: \n" +
-                "1 - Criar Empregado\n" +
-                "2 - Alterar Salário\n" +
-                "3 - Consultar Salário anual\n" +
-                "4 - Consultar informaçoes do Empregado\n" +
-                "5 - Sair";
+        try {
+            String msg = "Escolha um opçao: \n" +
+                    "1 - Criar Empregado\n" +
+                    "2 - Alterar Salário\n" +
+                    "3 - Consultar Salário anual\n" +
+                    "4 - Consultar informaçoes do Empregado\n" +
+                    "5 - Sair";
 
-        return Integer.parseInt(JOptionPane.showInputDialog(msg));
+            return Integer.parseInt(JOptionPane.showInputDialog(msg));
+        }
+        catch (NumberFormatException ex){
+            return 7;
+        }
     }
 }
