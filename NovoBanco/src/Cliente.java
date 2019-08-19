@@ -1,6 +1,16 @@
+import java.util.Date;
+
 public class Cliente {
-    private String nome, numConta;
+    private String nome, numConta, extrato;
     private double saldo;
+
+    public String getExtrato() {
+        return extrato;
+    }
+
+    public void setExtrato(String extrato) {
+        this.extrato = extrato;
+    }
 
     public Cliente() {
     }
@@ -35,10 +45,18 @@ public class Cliente {
         this.saldo = saldo;
     }
 
+    public void adicionarExtrato(Date data, String operacao, double valor){
+        if(extrato != null){
+            extrato += data + " " + operacao + " " + valor + "\n";
+        }else {
+            setExtrato(data + " " + operacao + " " + valor + "\n");
+        }
+    }
+
     @Override
     public String toString() {
         return "Cliente: " + nome + "\n" +
-                "numConta: " + numConta + "\n" +
+                "Numero de Conta: " + numConta + "\n" +
                 "saldo: " + saldo ;
     }
 

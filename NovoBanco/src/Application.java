@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Application {
     public static void main(String[] args) {
@@ -17,12 +18,9 @@ public class Application {
                     sacar(clientes);
                     break;
                 case 4:
-                    consultar(clientes);
+                    menuConsultar(leOpcaoConsulta(), clientes);
                     break;
                 case 5:
-                    consultarTodos(clientes);
-                    break;
-                case 6:
                     sair = true;
                     break;
                 default:
@@ -31,25 +29,19 @@ public class Application {
         }
     }
 
-    private static void consultar(ArrayList<Cliente> clientes) {
-        if (isClientesEmpty(clientes)) return;
-        Cliente cliente = procurar(clientes);
-        if (cliente == null){
-            JOptionPane.showMessageDialog(null, "Erro! Cliente nao encontrado!");
-            return;
-        }
-        JOptionPane.showMessageDialog(null, cliente.toString());
-    }
-
     private static int menu() {
-        String msg = "Opcoes:\n" +
-                "1 - Criar Conta\n" +
-                "2 - Depositar\n" +
-                "3 - Sacar\n" +
-                "4 - Consultar Conta\n" +
-                "5 - Consultar Todas as Contas\n" +
-                "6 - sair";
-        return Integer.parseInt(JOptionPane.showInputDialog(msg));
+        try {
+            String msg = "Opcoes:\n" +
+                    "1 - Criar Conta\n" +
+                    "2 - Depositar\n" +
+                    "3 - Sacar\n" +
+                    "4 - Consultar\n" +
+                    "5 - sair";
+            return Integer.parseInt(JOptionPane.showInputDialog(msg));
+        }
+        catch (NumberFormatException e){
+            return 0;
+        }
     }
 
     private static void criarCliente(ArrayList<Cliente> clientes) {
@@ -93,22 +85,30 @@ public class Application {
     private static void depositar(ArrayList<Cliente> clientes) {
         Cliente cliente = procurar(clientes);
         double saldo = cliente.getSaldo();
-        saldo += Double.parseDouble(JOptionPane.showInputDialog("Insira o valor a ser depositado:"));
+        double valor = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor a ser depositado:"));
+        saldo += valor;
+        Date data = new Date();
+        cliente.adicionarExtrato(data, "deposito", valor);
         cliente.setSaldo(saldo);
     }
 
     private static void sacar(ArrayList<Cliente> clientes) {
         Cliente cliente = procurar(clientes);
         double saldo = cliente.getSaldo();
-        saldo -= Double.parseDouble(JOptionPane.showInputDialog("Insira o valor a ser sacado:"));
+        double valor = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor a ser sacado:"));
+        saldo -= valor;
+        Date data = new Date();
+        cliente.adicionarExtrato(data, "saque", valor);
         cliente.setSaldo(saldo);
     }
 
+
+
     private static Cliente procurar(ArrayList<Cliente> clientes) {
-        String cpf = JOptionPane.showInputDialog("Insira o numero de conta do cliente:");
+        String num = JOptionPane.showInputDialog("Insira o numero de conta do cliente:");
         Cliente consultado = null;
         for (Cliente cliente : clientes){
-            if(cliente.getNumConta().equals(cpf)){
+            if(cliente.getNumConta().equals(num)){
                 consultado = cliente;
                 break;
             }
@@ -129,6 +129,56 @@ public class Application {
         return consultado;
     }
 
+    private static void menuConsultar(int opcao, ArrayList<Cliente> clientes) {
+        switch(opcao){
+            case 1:
+                consultar(clientes);
+                break;
+            case 2:
+                consultarTodos(clientes);
+                break;
+            case 3:
+                consultarNegativos(clientes);
+                break;
+            case 4:
+                consultarMaiorSaldo(clientes);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Opcao Invalida! Tente novamente.");
+        }
+    }
+
+    private static int leOpcaoConsulta() {
+        try {
+            String msg = "Opcoes:\n" +
+                    "1 - Consultar uma conta\n" +
+                    "2 - Consultar todas as contas\n" +
+                    "3 - Conltar contas negativas\n" +
+                    "4 - Consultar conta com maior saldo\n" +
+                    "5 - sair";
+            return Integer.parseInt(JOptionPane.showInputDialog(msg));
+        }
+        catch (NumberFormatException e){
+            return 0;
+        }
+    }
+
+    private static void consultar(ArrayList<Cliente> clientes) {
+        if (isClientesEmpty(clientes)) return;
+        Cliente cliente = procurar(clientes);
+        if (cliente == null){
+            JOptionPane.showMessageDialog(null, "Erro! Cliente nao encontrado!");
+            return;
+        }
+        JOptionPane.showMessageDialog(null, getExtratoECliente(cliente));
+    }
+
+    private static String getExtratoECliente(Cliente cliente) {
+        return cliente.toString() + "\n"
+                + "\n"
+                + cliente.getExtrato();
+    }
+
     private static void consultarTodos(ArrayList<Cliente> clientes) {
         if (isClientesEmpty(clientes)) return;
         StringBuilder msg = new StringBuilder();
@@ -138,6 +188,31 @@ public class Application {
                     .append("\n");
         }
         JOptionPane.showMessageDialog(null, msg);
+    }
+
+    private static void consultarNegativos(ArrayList<Cliente> clientes) {
+        if (isClientesEmpty(clientes)) return;
+        StringBuilder msg = new StringBuilder();
+        msg.append("Contas Negativas:\n");
+        for (Cliente cliente : clientes) {
+            if(cliente.getSaldo() < 0) {
+                msg.append(cliente.toString())
+                        .append("\n");
+            }
+        }
+        JOptionPane.showMessageDialog(null, msg);
+    }
+
+    private static void consultarMaiorSaldo(ArrayList<Cliente> clientes) {
+        if (isClientesEmpty(clientes)) return;
+        int i = 0, maior = 0;
+        for (Cliente cliente : clientes) {
+            if(cliente.getSaldo() >= clientes.get(maior).getSaldo()){
+                maior = i;
+            }
+            i++;
+        }
+        JOptionPane.showMessageDialog(null, clientes.get(maior).toString());
     }
 
     private static boolean isClientesEmpty(ArrayList<Cliente> clientes) {
