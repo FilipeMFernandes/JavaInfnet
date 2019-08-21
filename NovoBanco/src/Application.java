@@ -1,5 +1,3 @@
-import jdk.nashorn.internal.scripts.JO;
-
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,13 +57,20 @@ public class Application {
         }
         leNome(cliente);
         leSaldo(cliente);
+        if(cliente.getSaldo() == 0) return;
+        cliente.setTransacoes(new ArrayList<Transacao>());
         clientes.add(cliente);
     }
 
     private static void leSaldo(Cliente cliente) {
-        cliente.setSaldo(Integer.parseInt(JOptionPane.showInputDialog("Insira o saldo do cliente:")));
-        while(cliente.getSaldo()<=0){
-            cliente.setSaldo(Integer.parseInt(JOptionPane.showInputDialog("O saldo deve ser maior que 0! Insira novamente:")));
+        try {
+            cliente.setSaldo(Integer.parseInt(JOptionPane.showInputDialog("Insira o saldo do cliente:")));
+            while (cliente.getSaldo() <= 0) {
+                cliente.setSaldo(Integer.parseInt(JOptionPane.showInputDialog("O saldo deve ser maior que 0! Insira novamente:")));
+            }
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Opcao Invalida! Tente novamente.");
         }
     }
 
@@ -182,7 +187,7 @@ public class Application {
     private static String getExtratoECliente(Cliente cliente) {
         return cliente.toString() + "\n"
                 + "\n"
-                + cliente.getExtrato();
+                + cliente.mostrarTransacoes();
     }
 
     private static void consultarTodos(ArrayList<Cliente> clientes) {

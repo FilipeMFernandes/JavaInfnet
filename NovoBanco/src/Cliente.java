@@ -1,23 +1,26 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Cliente {
-    private String nome, numConta, extrato;
+    private String nome, numConta;
+    private ArrayList<Transacao> transacoes;
     private double saldo;
 
-    public String getExtrato() {
-        return extrato;
+    public ArrayList<Transacao> getTransacoes() {
+        return transacoes;
     }
 
-    public void setExtrato(String extrato) {
-        this.extrato = extrato;
+    public void setTransacoes(ArrayList<Transacao> transacoes) {
+        this.transacoes = transacoes;
     }
 
     public Cliente() {
     }
 
-    public Cliente(String nome, String numConta, double saldo) {
+    public Cliente(String nome, String numConta, ArrayList<Transacao> transacaos, double saldo) {
         this.nome = nome;
         this.numConta = numConta;
+        this.transacoes = new ArrayList<>();
         this.saldo = saldo;
     }
 
@@ -46,11 +49,7 @@ public class Cliente {
     }
 
     public void adicionarExtrato(Date data, String operacao, double valor){
-        if(extrato != null){
-            extrato += data + " " + operacao + " " + valor + "\n";
-        }else {
-            setExtrato(data + " " + operacao + " " + valor + "\n");
-        }
+        this.transacoes.add(new Transacao(data, operacao, valor));
     }
 
     @Override
@@ -60,4 +59,11 @@ public class Cliente {
                 "saldo: " + saldo ;
     }
 
+    public String mostrarTransacoes() {
+        StringBuilder transacoes = new StringBuilder();
+        for(Transacao transacao : this.transacoes){
+            transacoes.append(transacao.toString()).append("\n");
+        }
+        return transacoes.toString();
+    }
 }
