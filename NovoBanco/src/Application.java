@@ -1,3 +1,5 @@
+import jdk.nashorn.internal.scripts.JO;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,6 +23,9 @@ public class Application {
                     menuConsultar(leOpcaoConsulta(), clientes);
                     break;
                 case 5:
+                    excluir(clientes);
+                    break;
+                case 6:
                     sair = true;
                     break;
                 default:
@@ -36,7 +41,8 @@ public class Application {
                     "2 - Depositar\n" +
                     "3 - Sacar\n" +
                     "4 - Consultar\n" +
-                    "5 - sair";
+                    "5 - Excluir\n" +
+                    "6 - sair";
             return Integer.parseInt(JOptionPane.showInputDialog(msg));
         }
         catch (NumberFormatException e){
@@ -221,5 +227,14 @@ public class Application {
             return true;
         }
         return false;
+    }
+
+    private static void excluir(ArrayList<Cliente> clientes) {
+        String numConta = JOptionPane.showInputDialog("Insira o numero da conta a ser excluida:");
+        Cliente cliente = procurar(clientes, numConta);
+        boolean removeu = clientes.remove(cliente);
+        if(!removeu){
+            JOptionPane.showMessageDialog(null, "Conta nao encontrada!");
+        }
     }
 }
