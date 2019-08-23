@@ -17,13 +17,6 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nome, String numConta, ArrayList<Transacao> transacaos, double saldo) {
-        this.nome = nome;
-        this.numConta = numConta;
-        this.transacoes = new ArrayList<>();
-        this.saldo = saldo;
-    }
-
     public String getNome() {
         return nome;
     }

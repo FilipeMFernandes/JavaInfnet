@@ -58,7 +58,7 @@ public class Application {
         leNome(cliente);
         leSaldo(cliente);
         if(cliente.getSaldo() == 0) return;
-        cliente.setTransacoes(new ArrayList<Transacao>());
+        cliente.setTransacoes(new ArrayList<>());
         clientes.add(cliente);
     }
 
@@ -94,23 +94,33 @@ public class Application {
     }
 
     private static void depositar(ArrayList<Cliente> clientes) {
-        Cliente cliente = procurar(clientes);
-        double saldo = cliente.getSaldo();
-        double valor = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor a ser depositado:"));
-        saldo += valor;
-        Date data = new Date();
-        cliente.adicionarExtrato(data, "deposito", valor);
-        cliente.setSaldo(saldo);
+        try {
+            Cliente cliente = procurar(clientes);
+            double saldo = cliente.getSaldo();
+            double valor = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor a ser depositado:"));
+            saldo += valor;
+            Date data = new Date();
+            cliente.adicionarExtrato(data, "deposito", valor);
+            cliente.setSaldo(saldo);
+        }
+        catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Impossível realizar operaçao!");
+        }
     }
 
     private static void sacar(ArrayList<Cliente> clientes) {
-        Cliente cliente = procurar(clientes);
-        double saldo = cliente.getSaldo();
-        double valor = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor a ser sacado:"));
-        saldo -= valor;
-        Date data = new Date();
-        cliente.adicionarExtrato(data, "saque", valor);
-        cliente.setSaldo(saldo);
+        try {
+            Cliente cliente = procurar(clientes);
+            double saldo = cliente.getSaldo();
+            double valor = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor a ser sacado:"));
+            saldo -= valor;
+            Date data = new Date();
+            cliente.adicionarExtrato(data, "saque", valor);
+            cliente.setSaldo(saldo);
+        }
+        catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Impossível realizar operaçao!");
+        }
     }
 
 

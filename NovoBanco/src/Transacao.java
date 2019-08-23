@@ -5,9 +5,6 @@ public class Transacao {
     private String transacao;
     private double valor;
 
-    public Transacao() {
-    }
-
     public Transacao(Date data, String transacao, double valor) {
         this.data = data;
         this.transacao = transacao;
