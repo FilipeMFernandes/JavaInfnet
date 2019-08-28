@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/../FinalProject/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FinalProject/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FinalProject/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FinalProject/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Calculadora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculadora.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../NovoBanco/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NovoBanco/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -15,16 +16,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Calculadora.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+            <state relative-caret-position="657">
+              <caret line="49" column="27" lean-forward="true" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="27" />
+              <folding>
+                <element signature="e#144#145#0" expanded="true" />
+                <element signature="e#189#190#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -32,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Log.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1232">
-              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="738">
+              <caret line="61" column="27" lean-forward="true" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
               <folding>
                 <element signature="e#491#492#0" expanded="true" />
                 <element signature="e#523#524#0" expanded="true" />
@@ -45,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="38" column="79" selection-start-line="38" selection-start-column="79" selection-end-line="38" selection-end-column="79" />
+            <state relative-caret-position="217">
+              <caret line="83" column="29" lean-forward="true" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,8 +73,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Calculadora.java" />
         <option value="$PROJECT_DIR$/src/Log.java" />
+        <option value="$PROJECT_DIR$/src/Calculadora.java" />
         <option value="$PROJECT_DIR$/src/Application.java" />
       </list>
     </option>
@@ -159,18 +163,18 @@
       <option name="presentableId" value="Default" />
       <updated>1566847070265</updated>
       <workItem from="1566847080379" duration="6385000" />
-      <workItem from="1567021033637" duration="274000" />
+      <workItem from="1567021033637" duration="1913000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6659000" />
+    <option name="totallyTimeSpent" value="8298000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25349087" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25349087" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -187,7 +191,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49946293" weight="0.32924107" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49946293" weight="0.32849163" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053704" side_tool="true" weight="0.32960895" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Palette" order="0" />
@@ -211,8 +215,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Log.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1232">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        <state relative-caret-position="738">
+          <caret line="61" column="27" lean-forward="true" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
           <folding>
             <element signature="e#491#492#0" expanded="true" />
             <element signature="e#523#524#0" expanded="true" />
@@ -222,15 +226,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Calculadora.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        <state relative-caret-position="657">
+          <caret line="49" column="27" lean-forward="true" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="27" />
+          <folding>
+            <element signature="e#144#145#0" expanded="true" />
+            <element signature="e#189#190#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="38" column="79" selection-start-line="38" selection-start-column="79" selection-end-line="38" selection-end-column="79" />
+        <state relative-caret-position="217">
+          <caret line="83" column="29" lean-forward="true" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

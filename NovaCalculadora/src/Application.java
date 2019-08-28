@@ -51,7 +51,8 @@ public class Application {
                 JOptionPane.showMessageDialog(null, "Impossivel realizar divisao por zero.");
                 return;
             }
-            regResultado("divisao", resultado , calculadora);
+            calculadora.addLog("divisao", resultado);
+            printResultado("divisao", resultado);
         }
         catch (Exception ignore){
         }
@@ -60,7 +61,9 @@ public class Application {
     private static void multiplicacao(Calculadora calculadora) {
         try {
             leOps(calculadora, "multiplicacao");
-            regResultado("multiplicacao", calculadora.multiplicacao(), calculadora);
+            double resultado = calculadora.multiplicacao();
+            calculadora.addLog("multiplicacao", resultado);
+            printResultado("multiplicacao", resultado);
         }
         catch (Exception ignore){
 
@@ -70,7 +73,9 @@ public class Application {
     private static void subtracao(Calculadora calculadora) {
         try {
             leOps(calculadora, "subtracao");
-            regResultado("subtracao", calculadora.subtracao(), calculadora);
+            double resultado = calculadora.subtracao();
+            calculadora.addLog("subtracao", resultado);
+            printResultado("subtracao", resultado);
         }
         catch (Exception ignore){
 
@@ -80,28 +85,13 @@ public class Application {
     private static void soma(Calculadora calculadora) {
         try {
             leOps(calculadora, "soma");
-            regResultado("soma", calculadora.soma(), calculadora);
+            double resultado = calculadora.soma();
+            calculadora.addLog("soma", resultado);
+            printResultado("soma", resultado);
         }
         catch (Exception ignore){
 
         }
-    }
-
-    private static void regResultado(String op, double resultado, Calculadora calculadora) {
-        try {
-            Date data = new Date();
-            Log log = new Log(data, op, calculadora.getOp1(), calculadora.getOp2(), resultado);
-            calculadora.getLogs().add(log);
-            printResultado(op, resultado);
-        }
-        catch (NullPointerException e){
-            Date data = new Date();
-            Log log = new Log(data, op, calculadora.getOp1(), calculadora.getOp2(), resultado);
-            calculadora.setLogs(new ArrayList<>());
-            calculadora.getLogs().add(log);
-            printResultado(op, resultado);
-        }
-
     }
 
     private static void printResultado(String op, double resultado) {
