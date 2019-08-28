@@ -53,7 +53,7 @@ public class Calculadora {
     public String concatLogs(){
         StringBuilder logs = new StringBuilder();
         for(Log log : this.logs){
-            logs.append(log.toString());
+            logs.append(log.toString()).append("\n");
         }
         return logs.toString();
     }

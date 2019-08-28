@@ -24,12 +24,23 @@ public class Application {
                     divisao(calculadora);
                     break;
                 case 5:
+                    exibirHistorico(calculadora);
+                    break;
+                case 6:
                     sair = true;
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Comando invalido, tente novamente!");
             }
         }
+    }
+
+    private static void exibirHistorico(Calculadora calculadora) {
+        if(calculadora.getLogs() == null || calculadora.getLogs().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nenhuma operacao foi realizada");
+            return;
+        }
+        JOptionPane.showMessageDialog(null, calculadora.concatLogs());
     }
 
     private static void divisao(Calculadora calculadora) {
@@ -155,7 +166,8 @@ public class Application {
                             "2 - subtracao\n" +
                             "3 - multiplicacao\n" +
                             "4 - divisao\n" +
-                            "5 - sair"
+                            "5 - historico\n" +
+                            "6 - sair"
                     )
             );
         }
